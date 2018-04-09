@@ -2974,12 +2974,12 @@ var SmartQuery = function (_SmartApollo) {
   }, {
     key: 'loading',
     get: function get$$1() {
-      return this.vm.$data.$apolloData ? this.vm.$data.$apolloData.queries[this.key].loading : this._loading;
+      return this.vm.$data.$apolloData && this.vm.$data.$apolloData.queries[this.key] ? this.vm.$data.$apolloData.queries[this.key].loading : this._loading;
     },
     set: function set$$1(value) {
       if (this._loading !== value) {
         this._loading = value;
-        if (this.vm.$data.$apolloData) {
+        if (this.vm.$data.$apolloData && this.vm.$data.$apolloData.queries[this.key]) {
           this.vm.$data.$apolloData.queries[this.key].loading = value;
           this.vm.$data.$apolloData.loading += value ? 1 : -1;
         }
